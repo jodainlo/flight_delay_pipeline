@@ -42,25 +42,33 @@ flight_delay_pipeline/
 1. **Requisitos previos**
 
 Docker Desktop instalado y corriendo.
+
 Python 3.11 o superior.
+
 Archivo de datos flights_raw.csv ubicado en la carpeta data/.
 
 2. **Levantar la infraestructura**
 
 docker compose up -d
+
 Acceder a Airflow en http://localhost:8080 y ejecutar el DAG 01_prediccion_retrasos_vuelos para ingerir los datos.
 
 3. **Transformación con dbt**
 
 En un entorno virtual de Python, instala el adaptador y ejecuta los modelos:
+
 pip install dbt-postgres
+
 cd transformacion_vuelos
+
 dbt run
 
 4. **Entrenar el modelo de Machine Learning**
 
 Regresa a la carpeta raíz y ejecuta el script predictivo:
+
 pip install pandas scikit-learn sqlalchemy psycopg2-binary
+
 python entrenar_modelo.py
 
 
