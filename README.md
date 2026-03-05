@@ -21,6 +21,8 @@ Este proyecto es una arquitectura de datos Batch completa (ELT) diseñada para p
 3. **Consumo (ML):** Un script de Python extrae una muestra representativa del Data Mart y entrena un modelo `RandomForestClassifier`. Se aplicó balanceo de clases (`class_weight='balanced'`) para priorizar el *recall* en la detección efectiva de vuelos retrasados.
 
 ## 📂 Estructura del Proyecto
+
+```text
 flight_delay_pipeline/
 ├── dags/
 │   └── 01_flight_pipeline.py        # DAG de Airflow para la ingesta
