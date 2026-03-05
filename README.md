@@ -36,6 +36,7 @@ flight_delay_pipeline/
 ├── entrenar_modelo.py               # Script de Machine Learning
 ├── docker-compose.yaml              # Infraestructura (Airflow + Postgres)
 └── README.md
+```bash
 
 ## Cómo ejecutar este proyecto
 1. **Requisitos previos**
