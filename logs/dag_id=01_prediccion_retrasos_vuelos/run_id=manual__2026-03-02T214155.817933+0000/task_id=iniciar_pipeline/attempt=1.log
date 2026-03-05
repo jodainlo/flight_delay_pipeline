@@ -1,0 +1,12 @@
+[2026-03-02T21:44:31.748+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: 01_prediccion_retrasos_vuelos.iniciar_pipeline manual__2026-03-02T21:41:55.817933+00:00 [queued]>
+[2026-03-02T21:44:31.781+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: 01_prediccion_retrasos_vuelos.iniciar_pipeline manual__2026-03-02T21:41:55.817933+00:00 [queued]>
+[2026-03-02T21:44:31.783+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2026-03-02T21:44:31.824+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): iniciar_pipeline> on 2026-03-02 21:41:55.817933+00:00
+[2026-03-02T21:44:31.871+0000] {standard_task_runner.py:60} INFO - Started process 889 to run task
+[2026-03-02T21:44:31.899+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', '01_prediccion_retrasos_vuelos', 'iniciar_pipeline', 'manual__2026-03-02T21:41:55.817933+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/01_flight_pipeline.py', '--cfg-path', '/tmp/tmpj8ectlrz']
+[2026-03-02T21:44:31.907+0000] {standard_task_runner.py:88} INFO - Job 4: Subtask iniciar_pipeline
+[2026-03-02T21:44:42.308+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 4 for task iniciar_pipeline ((psycopg2.OperationalError) could not translate host name "postgres" to address: Temporary failure in name resolution
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8); 889)
+[2026-03-02T21:44:44.787+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2026-03-02T21:44:45.223+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

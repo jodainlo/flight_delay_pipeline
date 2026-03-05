@@ -1,0 +1,10 @@
+# Ignorar datos masivos
+data/
+*.csv
+
+# Ignorar entorno virtual de Python
+venv/
+__pycache__/
+
+# Ignorar credenciales de dbt (si estuvieran aquí)
+profiles.yml

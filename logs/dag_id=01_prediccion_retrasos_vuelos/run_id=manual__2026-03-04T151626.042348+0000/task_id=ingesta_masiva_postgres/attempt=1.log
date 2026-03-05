@@ -1,0 +1,36 @@
+[2026-03-04T15:16:51.951+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: 01_prediccion_retrasos_vuelos.ingesta_masiva_postgres manual__2026-03-04T15:16:26.042348+00:00 [queued]>
+[2026-03-04T15:16:51.965+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: 01_prediccion_retrasos_vuelos.ingesta_masiva_postgres manual__2026-03-04T15:16:26.042348+00:00 [queued]>
+[2026-03-04T15:16:51.966+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 2
+[2026-03-04T15:16:51.992+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): ingesta_masiva_postgres> on 2026-03-04 15:16:26.042348+00:00
+[2026-03-04T15:16:52.006+0000] {standard_task_runner.py:60} INFO - Started process 314 to run task
+[2026-03-04T15:16:52.012+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', '01_prediccion_retrasos_vuelos', 'ingesta_masiva_postgres', 'manual__2026-03-04T15:16:26.042348+00:00', '--job-id', '22', '--raw', '--subdir', 'DAGS_FOLDER/01_flight_pipeline.py', '--cfg-path', '/tmp/tmpviqdevay']
+[2026-03-04T15:16:52.016+0000] {standard_task_runner.py:88} INFO - Job 22: Subtask ingesta_masiva_postgres
+[2026-03-04T15:16:52.117+0000] {task_command.py:423} INFO - Running <TaskInstance: 01_prediccion_retrasos_vuelos.ingesta_masiva_postgres manual__2026-03-04T15:16:26.042348+00:00 [running]> on host 9f2d94c00e6d
+[2026-03-04T15:16:52.277+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='jorge_data_engineer' AIRFLOW_CTX_DAG_ID='01_prediccion_retrasos_vuelos' AIRFLOW_CTX_TASK_ID='ingesta_masiva_postgres' AIRFLOW_CTX_EXECUTION_DATE='2026-03-04T15:16:26.042348+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-04T15:16:26.042348+00:00'
+[2026-03-04T15:16:52.297+0000] {base.py:83} INFO - Using connection ID 'conexion_postgres_vuelos' for task execution.
+[2026-03-04T15:16:52.306+0000] {sql.py:450} INFO - Running statement: 
+    CREATE TABLE IF NOT EXISTS vuelos_historicos_raw (
+        YEAR VARCHAR(255), MONTH VARCHAR(255), DAY VARCHAR(255), DAY_OF_WEEK VARCHAR(255),
+        AIRLINE VARCHAR(255), FLIGHT_NUMBER VARCHAR(255), TAIL_NUMBER VARCHAR(255),
+        ORIGIN_AIRPORT VARCHAR(255), DESTINATION_AIRPORT VARCHAR(255), SCHEDULED_DEPARTURE VARCHAR(255),
+        DEPARTURE_TIME VARCHAR(255), DEPARTURE_DELAY VARCHAR(255), TAXI_OUT VARCHAR(255),
+        WHEELS_OFF VARCHAR(255), SCHEDULED_TIME VARCHAR(255), ELAPSED_TIME VARCHAR(255),
+        AIR_TIME VARCHAR(255), DISTANCE VARCHAR(255), WHEELS_ON VARCHAR(255), TAXI_IN VARCHAR(255),
+        SCHEDULED_ARRIVAL VARCHAR(255), ARRIVAL_TIME VARCHAR(255), ARRIVAL_DELAY VARCHAR(255),
+        DIVERTED VARCHAR(255), CANCELLED VARCHAR(255), CANCELLATION_REASON VARCHAR(255),
+        AIR_SYSTEM_DELAY VARCHAR(255), SECURITY_DELAY VARCHAR(255), AIRLINE_DELAY VARCHAR(255),
+        LATE_AIRCRAFT_DELAY VARCHAR(255), WEATHER_DELAY VARCHAR(255)
+    );
+    
+    -- Limpiamos la tabla por si corremos el DAG varias veces
+    TRUNCATE TABLE vuelos_historicos_raw;
+    , parameters: None
+[2026-03-04T15:16:52.382+0000] {logging_mixin.py:188} INFO - Tabla creada y limpia.
+[2026-03-04T15:16:52.383+0000] {logging_mixin.py:188} INFO - Iniciando la ingesta masiva de datos. Esto puede tomar unos segundos...
+[2026-03-04T15:16:52.384+0000] {postgres.py:172} INFO - Running copy expert: COPY vuelos_historicos_raw FROM STDIN WITH CSV HEADER, filename: /opt/***/data/flights_raw.csv
+[2026-03-04T15:16:52.445+0000] {base.py:83} INFO - Using connection ID 'conexion_postgres_vuelos' for task execution.
+[2026-03-04T15:18:16.089+0000] {logging_mixin.py:188} INFO - ¡Carga masiva completada con exito!
+[2026-03-04T15:18:16.159+0000] {python.py:201} INFO - Done. Returned value was: None
+[2026-03-04T15:18:16.877+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=01_prediccion_retrasos_vuelos, task_id=ingesta_masiva_postgres, execution_date=20260304T151626, start_date=20260304T151651, end_date=20260304T151816
+[2026-03-04T15:18:17.335+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-03-04T15:18:17.547+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
