@@ -22,6 +22,7 @@ Este proyecto es una arquitectura de datos Batch completa (ELT) diseñada para p
 
 ## 📂 Estructura del Proyecto
 
+## 📂 Estructura del Proyecto
 ```text
 flight_delay_pipeline/
 ├── dags/
@@ -36,7 +37,6 @@ flight_delay_pipeline/
 ├── entrenar_modelo.py               # Script de Machine Learning
 ├── docker-compose.yaml              # Infraestructura (Airflow + Postgres)
 └── README.md
-```bash
 
 ## Cómo ejecutar este proyecto
 1. **Requisitos previos**
